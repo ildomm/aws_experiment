@@ -1,7 +1,11 @@
 package main
 
 import (
+	"context"
 	"fmt"
+	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/aws/aws-sdk-go-v2/config"
+	"github.com/ildomm/aws_experiment/handler"
 	"github.com/ildomm/aws_experiment/util"
 	"log"
 	"os"
@@ -22,7 +26,19 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// DEBUG
-	log.Print("Running")
-	// DEBUG
+	// Load AWS configuration
+	ctx := context.Background()
+	configuration, err := config.LoadDefaultConfig(ctx)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Start the Lambda handler
+	builder, err := handler.Build(&configuration)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	log.Print("Starting handler")
+	lambda.Start(builder.Handle)
 }
