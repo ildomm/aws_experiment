@@ -1,9 +1,6 @@
 
-# Should match the version used in https://github.com/LoyaltyNZ/service_base_golang_builder
 # See https://golangci-lint.run/usage/install/
 LINTER_VERSION = v1.52.2
-
-# To be used for dependencies not installed with gomod
 LOCAL_DEPS_INSTALL_LOCATION = /usr/local/bin
 
 .PHONY: checks
