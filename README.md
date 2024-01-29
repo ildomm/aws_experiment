@@ -1,3 +1,5 @@
+![Go Report Card](https://goreportcard.com/badge/github.com/ildomm/aws_experiment?cache=v1)
+
 # aws_experiment
 Aws Lambda experiment
 
